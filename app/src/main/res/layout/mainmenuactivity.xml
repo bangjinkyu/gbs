@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" 
+android:layout_width="fill_parent" 
+android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:textSize="12.0sp"
+        android:gravity="right"
+        android:id="@id/txtMission"
+        android:layout_width="fill_parent"
+        android:layout_height="20.0dip" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0">
+        <Button
+            android:textSize="30.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnMemberMgr"
+            android:background="@drawable/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="명단관리"
+            android:layout_weight="1.0" />
+        <Button android:textSize="30.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnAttendCheck"
+            android:background="@drawable/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="출석체크"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0">
+        <Button
+            android:textSize="30.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnAttendRate"
+            android:background="@drawable/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="출석률"
+            android:layout_weight="1.0" />
+        <Button
+            android:textSize="30.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnSettings"
+            android:background="@drawable/buttons"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="부가정보"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

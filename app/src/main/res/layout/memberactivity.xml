@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/bt_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="46.0dip">
+        <Button
+            android:textSize="13.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnsubmit"
+            android:background="@drawable/buttons"
+            android:layout_width="100.0dip"
+            android:layout_height="39.0dip"
+            android:text="저장"
+            android:layout_weight="1.0" />
+        <Button
+            android:textSize="13.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btnreset"
+            android:background="@drawable/buttons"
+            android:layout_width="100.0dip"
+            android:layout_height="39.0dip"
+            android:text="리셋"
+            android:layout_weight="1.0" />
+        <Button
+            android:textSize="13.0sp"
+            android:textColor="#ffffffff"
+            android:id="@id/btndatepicker"
+            android:background="@drawable/buttons"
+            android:layout_width="100.0dip"
+            android:layout_height="39.0dip"
+            android:text="날짜"
+            android:layout_weight="1.0" />
+        <TextView
+            android:textSize="20.0sp"
+            android:gravity="center"
+            android:id="@id/today"
+            android:layout_width="120.0dip"
+            android:layout_height="fill_parent"
+            android:text="0000-00-00" />
+        <TextView
+            android:id="@id/result"
+            android:textSize="20.0sp"
+            android:textColor="#ffffa500"
+            android:gravity="center"
+            android:layout_width="50.0dip"
+            android:layout_height="fill_parent"
+            android:text="0" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/count_linear"
+        android:layout_below="@+id/bt_linear"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Total : " />
+        <TextView
+            android:textSize="11.0sp"
+            android:id="@id/tvTotal"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:text="0" />
+        <TextView
+            android:textSize="11.0sp"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="셀장 : " />
+        <TextView android:textSize="11.0sp"
+            android:gravity="left"
+            android:id="@id/tvCellO"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:text="0" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="셀원 : " />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:id="@id/tvCellM"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:text="0" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/role_linear"
+        android:layout_below="@+id/count_linear"
+        android:gravity="right"
+        android:layout_width="fill_parent"
+        android:layout_height="20.0dip">
+        <Button
+            android:background="#ffff8c00"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="전도사" />
+        <Button
+            android:background="#ff33b5e5"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="선교사" />
+        <Button
+            android:background="#ffffd700"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="선교목양사" />
+        <Button
+            android:background="#fffe2d95"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="셀장" />
+        <Button
+            android:background="#ffffffff"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="20.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="셀원" />
+        <Button
+            android:background="#ff7cfc00"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="10.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="새가족" />
+        <Button
+            android:background="@color/red"
+            android:layout_width="13.0dip"
+            android:layout_height="13.0dip" />
+        <TextView
+            android:textSize="11.0sp"
+            android:gravity="left"
+            android:paddingLeft="10.0px"
+            android:paddingRight="10.0px"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="관리" />
+    </LinearLayout>
+    <GridView
+        android:layout_below="@+id/role_linear"
+        android:gravity="center"
+        android:id="@id/memberList"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="50dp"
+        android:numColumns="4" />
+    <Button
+        android:id="@id/btnexcel"
+        android:textSize="13.0sp"
+        android:textColor="#ffffffff"
+        android:background="@drawable/buttons"
+        android:layout_width="100dp"
+        android:layout_height="39dp"
+         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="엑셀" />
+</RelativeLayout>

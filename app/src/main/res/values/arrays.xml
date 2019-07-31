@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ages">
+        <item>나이전체</item>
+        <item>20대</item>
+        <item>30대</item>
+        <item>40대</item>
+    </string-array>
+    <string-array name="genders">
+        <item>성별전체</item>
+        <item>자매</item>
+        <item>형제</item>
+    </string-array>
+    <string-array name="marriages">
+        <item>혼인전체</item>
+        <item>미혼</item>
+        <item>기혼</item>
+    </string-array>
+    <string-array name="months">
+        <item>1월</item>
+        <item>2월</item>
+        <item>3월</item>
+        <item>4월</item>
+        <item>5월</item>
+        <item>6월</item>
+        <item>7월</item>
+        <item>8월</item>
+        <item>9월</item>
+        <item>10월</item>
+        <item>11월</item>
+        <item>12월</item>
+    </string-array>
+    <string-array name="roles">
+        <item>전도사</item>
+        <item>선교사</item>
+        <item>선교목양사</item>
+        <item>셀장</item>
+        <item>셀원</item>
+        <item>새가족</item>
+        <item>관리</item>
+    </string-array>
+    <string-array name="roleK">
+        <item>직분전체</item>
+        <item>셀장</item>
+        <item>셀원</item>
+    </string-array>
+</resources>

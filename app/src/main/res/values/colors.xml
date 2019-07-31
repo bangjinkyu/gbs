@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blak">#000001</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="blue">#0000ED</color>
+    <color name="mis">#ffff8c00</color>
+    <color name="mis1">#ff33b5e5</color>
+    <color name="cell0">#ffffd700</color>
+    <color name="cell1">#fffe2d95</color>
+    <color name="cellm">#FFFABf28</color>
+    <color name="newbie">#ff7cfc00</color>
+    <color name="gender_m">#ff7474B5</color>
+    <color name="gender_f">#ffAB4B4B</color>
+    <color name="age20">#FFB4DC6A</color>
+    <color name="age30">#FFE3CB94</color>
+    <color name="age40">#FF9C9CDB</color>
+    <color name="call">#FF00FF00</color>
+    <color name="birth">#FF00FFFF</color>
+    <color name="sms">#FFFFFF00</color>
+    <color name="red">#FF2222</color>
+    <color name="white">#ffffff</color>
+</resources>
