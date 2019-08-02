@@ -45,8 +45,8 @@ public class OptionActivity extends Activity
     EditText txtKeyword;
     String urlAuthList = "http://www.bwm.or.kr/attend/m_auth_req_g.php";
     String urlMemberSearch = "http://www.bwm.or.kr/attend/m_member_search.php";
-    String urlSaveAuth = "http://www.bwm.or.kr/attend/m_auth_update.php";
-    String urlDeleteAuth ="http://www.bwm.or.kr/attend/m_auth_delete.php";
+    String urlSaveAuth = "http://www.bwm.or.kr/attend/m_auth_g_update.php";
+    String urlDeleteAuth ="http://www.bwm.or.kr/attend/m_auth_g_delete.php";
 
  //  String urlAuth = "http://www.bwm.or.kr/attend/m_auth.php?phone=";"
    // "http://www.bwm.or.kr/attend/m_member_save.php?misidx="   &mode=D
@@ -185,9 +185,9 @@ public class OptionActivity extends Activity
                             }else if(isuseyn){
                                 mUseyn=localXmlPullParser.getText();
                                 isuseyn=false;
-//                                Log.d(TAG,"phone= "+mPhone);
-//                                Log.d(TAG,"misidx= "+mMisidx);
-//                                Log.d(TAG,"misnm= "+mMisnm);
+                                Log.d(TAG,"phone= "+mPhone);
+                                Log.d(TAG,"misidx= "+mMisidx);
+                                Log.d(TAG,"misnm= "+mMisnm);
 //                                Log.d(TAG,"memnm= "+mMemnm);
 //                                Log.d(TAG,"grade= "+mGrade);
 //                                Log.d(TAG,"useyn= "+mUseyn);
@@ -433,27 +433,27 @@ public class OptionActivity extends Activity
             phonetextView.setTextSize(12);
 
 
-            MisnmObject1.setText(localRowItem.getMisnm());
+            MisnmObject1.setText(localRowItem.getMisnm()); //목장이름
             MisnmObject1.setWidth(140);
             MisnmObject1.setGravity(3);
             MisnmObject1.setTextSize(12);
 
-            misinedit.setText(localRowItem.getMisid());
+            misinedit.setText(localRowItem.getMisid());  //목장번호
             misinedit.setWidth(100);
             misinedit.setGravity(3);
             misinedit.setTextSize(12);
 
-            MemTextView.setText(localRowItem.getMemnm());
+            MemTextView.setText(localRowItem.getMemnm());//이름
             MemTextView.setWidth(100);
             MemTextView.setGravity(3);
             MemTextView.setTextSize(11);
 
-            editText.setText(localRowItem.getGrade());
+            editText.setText(localRowItem.getGrade());  //권한
             editText.setWidth(110);
             editText.setTextSize(11);
             editText.setGravity(3);
 
-            usebt.setWidth(60);
+            usebt.setWidth(40);
             usebt.setHeight(40);
             usebt.setGravity( Gravity.CENTER);
             usebt.setBackgroundResource(R.drawable.togglebuttons);
@@ -483,17 +483,18 @@ public class OptionActivity extends Activity
                           //      String str1 = ((Button)paramAnonymousView).getTag().toString();
                                 String str2 = ((Button)paramAnonymousView).getHint().toString();
                                Log.d(TAG,"phone"+str);
+                    Log.d(TAG,"str2"+str2);
                                     Log.d(TAG,"misinedit"+misinedit.getText().toString());
                                   Log.d(TAG,"useyn"+usebt.isChecked());
                                 new SaveAuthAsyncTask().execute(new String[] {
-                                        OptionActivity.this.urlSaveAuth + "?phone=" + str + "&useyn=" + (usebt.isChecked() ? "Y":"N") +"&misidx=" +str2 + "&grade="+editText.getText().toString()});
+                                        OptionActivity.this.urlSaveAuth + "?phone=" + str + "&useyn=" + (usebt.isChecked() ? "Y":"N") +"&misidx=" +misinedit.getText().toString() + "&grade="+editText.getText().toString()});
                 }
            });
             localButton.setText("삭제");
             localButton.setTextSize(12);
             localButton.setTextColor(-1);
             localButton.setBackgroundResource(R.drawable. buttons);
-            localButton.setWidth(60);
+            localButton.setWidth(40);
             localButton.setGravity( Gravity.CENTER);
             localButton.setHint(localRowItem.getMisid());
             localButton.setContentDescription(localRowItem.getPhone());
@@ -516,7 +517,7 @@ public class OptionActivity extends Activity
             ((TableRow) tableRow).setPadding(0, 5, 3, 3);
             ((TableRow) tableRow).addView(phonetextView);
             ((TableRow) tableRow).addView(MisnmObject1);
-           // ((TableRow) tableRow).addView(misinedit);
+            ((TableRow) tableRow).addView(misinedit);
             ((TableRow) tableRow).addView(MemTextView);
             ((TableRow) tableRow).addView(editText);
             ((TableRow) tableRow).addView(usebt);

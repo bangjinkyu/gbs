@@ -140,8 +140,8 @@ public class MemberAttendActivity extends Activity {
     TextView txtTo;
     String urlGetMember_n = "http://www.bwm.or.kr/attend/m_attend_member_n2.php?misidx=";  //이름순
     String urlGetMember_r = "http://www.bwm.or.kr/attend/m_attend_member_r2.php?misidx="; //출석순
-    String urlGetMission = "http://www.bwm.or.kr/attend/m_attend_mission2.php?misidx=";
-    String urlGetSunday = "http://www.bwm.or.kr/attend/m_attend_holyday.php?day=";
+    String urlGetMission = "http://www.bwm.or.kr/attend/m_attend_mission2.php?misidx=";//각조장별
+    String urlGetSunday = "http://www.bwm.or.kr/attend/m_attend_holyday_g.php?day=";
 
     private void GetMember(String paramString) {
 
@@ -460,8 +460,8 @@ public class MemberAttendActivity extends Activity {
           //  int j = localObject2.length;
 
                 //상단 표시 제목과 글자크기
-                ((XYMultipleSeriesRenderer) renderer).setChartTitle("선교회별 주일 출석현황");
-                ((XYMultipleSeriesRenderer) renderer).setChartTitleTextSize(30);
+                ((XYMultipleSeriesRenderer) renderer).setChartTitle("GBS별 주일 출석현황");
+                ((XYMultipleSeriesRenderer) renderer).setChartTitleTextSize(40);
                 //분류명 글자 크기 및 생삭 지정
                 ((XYMultipleSeriesRenderer) renderer).setLegendTextSize(25.0F);
                 SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
@@ -475,9 +475,9 @@ public class MemberAttendActivity extends Activity {
                 //X,Y축 항목이름과 글자 크기
                 ((XYMultipleSeriesRenderer) renderer).setXTitle("목장");
                 ((XYMultipleSeriesRenderer) renderer).setYTitle("인원");
-                ((XYMultipleSeriesRenderer) renderer).setAxisTitleTextSize(25.0F);
+                ((XYMultipleSeriesRenderer) renderer).setAxisTitleTextSize(35.0F);
                 //수치값 글자 크기 / X축 최소, 최대값  /Y축 최소,최대값
-                ((XYMultipleSeriesRenderer) renderer).setLabelsTextSize(25.0F);
+                ((XYMultipleSeriesRenderer) renderer).setLabelsTextSize(35.0F);
                 ((XYMultipleSeriesRenderer) renderer).setYAxisMin(0.0D);
                 ((XYMultipleSeriesRenderer) renderer).setYAxisMax(100.0D);
                 ((XYMultipleSeriesRenderer) renderer).setXAxisMin(0.0D);

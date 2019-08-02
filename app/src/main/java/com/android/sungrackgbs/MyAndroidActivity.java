@@ -15,9 +15,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -27,20 +32,25 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyAndroidActivity extends Activity {
     private String TAG ="MyAndroidActivity";
-    String Grade = "";
-    String Misidx = "";  //목장순서 31  32 33 34 35 36 37  38 39 40 41 42 42  29 교육팀  46 본부 28새가족팀
-    String Misnm = "";  //목장  네임 BWM1목장 Bwm 2목장 bwm3목장
-    LinearLayout baseContainer; //목장 목록
-    ArrayList<Button> btnMission;// 슈퍼관리자 권한에서 전체 메뉴 보기
-    Intent intent;
-    Intent intentOption;
+    private String Grade = "";
+    private String Misidx = "";  //목장순서 31  32 33 34 35 36 37  38 39 40 41 42 42  29 교육팀  46 본부 28새가족팀
+    private String Misnm = "";  //목장  네임 BWM1목장 Bwm 2목장 bwm3목장
+    private String Useyn = "";
+    private LinearLayout baseContainer; //목장 목록
+    private GridView mGridView; // 목장리스트
+    private GridViewAdapter mGridViewAdapter;
+    private ArrayList<HashMap<String, Object>> btnMission;// 슈퍼관리자 권한에서 전체 메뉴 보기
+    private Button btn_setting;
+    private Button btn_attend;
+    private Intent intent;
+    private Intent intentOption;
     ProgressDialog pd;
     String urlAuth = "http://www.bwm.or.kr/attend/m_auth_g.php?phone=";//
     String urlMissionList = "http://www.bwm.or.kr/attend/m_mission_g_list.php";  //gbs list
-   String index = "";
 
     private final static  int MT_PERMISSION_REQUEST_CODE = 100;
     private String phoneNumber = "";
@@ -83,6 +93,8 @@ public class MyAndroidActivity extends Activity {
                            }else if(localXmlPullParser.getName().equals("misnm")){
                                ismisnm =true;
                                str="misnm";
+                           }else if(localXmlPullParser.getName().equals("useyn")){
+                               str="useyn";
                            }
 
 
@@ -99,8 +111,10 @@ public class MyAndroidActivity extends Activity {
                            }else if((str.equals("misnm") && this.Misnm.equals(""))){
                                this.Misnm =localXmlPullParser.getText();
                                Log.d(TAG,"Misnm= "+Misnm);
+                           }else if((str.equals("useyn") && this.Useyn.equals(""))) {
+                               this.Useyn = localXmlPullParser.getText();
+                               Log.d(TAG, "Useyn= " + Useyn);
                            }
-
                            break;
                    }
                    parserEvent = localXmlPullParser.next();
@@ -127,7 +141,7 @@ public class MyAndroidActivity extends Activity {
                 localXmlPullParser = XmlPullParserFactory.newInstance().newPullParser();
                 localXmlPullParser.setInput(is, "UTF-8");
                 int parserEvent  = localXmlPullParser.getEventType();
-                String str="";
+                String index = "";
                 String mNmae="";
 
                 boolean ismisnm = false, ismisidx = false;
@@ -157,24 +171,11 @@ public class MyAndroidActivity extends Activity {
                                     Log.d(TAG,"ismisnm index= "+index);
                                     Log.d(TAG,"ismisnm misnm= "+mNmae);
                                     ismisnm=false;
-                                   Button  but = new Button(MyAndroidActivity.this);
 
-                                    but.setBackgroundResource(R.drawable.buttons);
-                                    but.setTextColor(-1);
-                                    but.setTag(index);
-                                    but.setText(mNmae);
-                                    but.setContentDescription(mNmae);
-                                    but.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                intent.putExtra("misidx", v.getTag().toString());
-                                                CommonValue.getInstance().setMisidx(v.getTag().toString());
-                                                CommonValue.getInstance().setMisNm(v.getContentDescription().toString());
-                                                startActivity(MyAndroidActivity.this.intent);
-
-                                            }
-                                        });
-                                    this.btnMission.add(but);
+                                    HashMap<String, Object> object = new HashMap<String, Object>();
+                                    object.put("misidx", index); // 조별 idx
+                                    object.put("misnm", mNmae); //
+                                    btnMission.add(object);
                                 }
                             break;
                     }//end Switch
@@ -193,9 +194,26 @@ public class MyAndroidActivity extends Activity {
         setContentView(R.layout.main);//2130903041
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // 화면 항상 켜기
         try {
-            this.baseContainer = (LinearLayout) findViewById(R.id.missionList);//R.id.missionList
-            this.btnMission = new ArrayList();
-            MyAndroidActivity.this.intent = new Intent(this, MainMenuActivity.class);
+           // this.baseContainer = (LinearLayout) findViewById(R.id.missionList);//R.id.missionList
+            mGridView = (GridView) findViewById(R.id.missionList);
+            mGridViewAdapter = new GridViewAdapter(this);
+
+            btnMission = new ArrayList<HashMap<String, Object>>();
+            btn_attend = (Button) findViewById(R.id.btn_attend);
+            btn_setting = (Button) findViewById(R.id.btn_setting);
+            btn_attend.setOnClickListener(new View.OnClickListener() {
+                  public void onClick(View paramAnonymousView) {
+                      Intent mintent = new Intent(MyAndroidActivity.this,GbsmemberAttendActivity.class);
+                      startActivity(mintent);
+                  }
+          });
+
+            btn_setting.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View paramAnonymousView) {
+                    MyAndroidActivity.this.intentOption = new Intent(MyAndroidActivity.this, OptionActivity.class);
+                    MyAndroidActivity.this.startActivity(MyAndroidActivity.this.intentOption);
+                }
+            });
 
 //            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //
@@ -228,6 +246,62 @@ public class MyAndroidActivity extends Activity {
     }
 
 
+    public class GridViewAdapter extends BaseAdapter {
+        Context mContext;
+
+
+        public GridViewAdapter(Context context) {
+            mContext = context;
+            Log.d(TAG,"GridViewAdapter");
+        }
+
+        @Override
+        public int getCount() {
+            return btnMission.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return btnMission.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.adapter_gridview_item, parent, false);
+                holder = new ViewHolder();
+                holder.btn_name = (Button) convertView.findViewById(R.id.btn_name);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            holder.btn_name.setText((String)btnMission.get(position).get("misnm"));
+            holder.btn_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    MyAndroidActivity.this.intent = new Intent(MyAndroidActivity.this, MainMenuActivity.class);
+                    intent.putExtra("misidx", (String)btnMission.get(position).get("misidx"));
+                    CommonValue.getInstance().setMisidx((String)btnMission.get(position).get("misidx"));
+                    CommonValue.getInstance().setMisNm((String)btnMission.get(position).get("misnm"));
+                    startActivity(MyAndroidActivity.this.intent);
+                }
+            });
+            return convertView;
+        }
+        class ViewHolder {
+            Button btn_name;
+        }
+    }
     private class AuthAsyncTask extends AsyncTask<String, Integer, Integer> {
 
         @Override
@@ -245,8 +319,9 @@ public class MyAndroidActivity extends Activity {
             if ((MyAndroidActivity.this.pd != null) && (MyAndroidActivity.this.pd.isShowing())) {
                 MyAndroidActivity.this.pd.dismiss();
             }
-
-            if (MyAndroidActivity.this.Grade.equals("000")) {
+            Log.d(TAG,"this.Grade= "+Grade);
+            Log.d(TAG,"this.Useyn= "+Useyn);
+            if (Grade.equals("000") || Grade.isEmpty() || Useyn.equals("N")) {
                 AlertDialog.Builder builder  = new AlertDialog.Builder(MyAndroidActivity.this);
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {
@@ -265,13 +340,13 @@ public class MyAndroidActivity extends Activity {
                 CommonValue.getInstance().setMisidx(MyAndroidActivity.this.Misidx);
                CommonValue.getInstance().setAuth(MyAndroidActivity.this.Grade);
                 CommonValue.getInstance().setMisNm(MyAndroidActivity.this.Misnm);
-
+                CommonValue.getInstance().setMisNm(Useyn);
 
                 if (MyAndroidActivity.this.Grade.equals("999")) {
                     if ((MyAndroidActivity.this.pd == null) || (!MyAndroidActivity.this.pd.isShowing())) {
                         MyAndroidActivity.this.pd = ProgressDialog.show(MyAndroidActivity.this, "", "선교회 목록을 가져오고 있습니다...", true);
                     }
-                    new MyAndroidActivity.MissionAsyncTask().execute(new String[]{MyAndroidActivity.this.urlMissionList + "?ishq=N"});
+                    new MissionAsyncTask().execute(new String[]{MyAndroidActivity.this.urlMissionList + "?ishq=N"});
 
                 } else if (MyAndroidActivity.this.Grade.equals("998")) {
                     if ((MyAndroidActivity.this.pd == null) || (!MyAndroidActivity.this.pd.isShowing())) {
@@ -279,9 +354,9 @@ public class MyAndroidActivity extends Activity {
                     }
                     new MyAndroidActivity.MissionAsyncTask().execute(new String[]{MyAndroidActivity.this.urlMissionList + "?ishq=Y"});
                 } else {//일반 권한
-
+                    MyAndroidActivity.this.intent = new Intent(MyAndroidActivity.this, MainMenuActivity.class);
                     MyAndroidActivity.this.intent.putExtra("misidx", MyAndroidActivity.this.Misidx);
-                    MyAndroidActivity.this.startActivity(MyAndroidActivity.this.intent);
+                    startActivity(MyAndroidActivity.this.intent);
                 }
 
         }
@@ -297,30 +372,12 @@ public class MyAndroidActivity extends Activity {
         }
 
         protected void onPostExecute(Long paramLong) {
-            if (MyAndroidActivity.this.Grade.equals("999")) {
-                Button but = new Button(MyAndroidActivity.this);
-                but.setBackgroundResource(R.drawable.buttons);
-                but.setTextColor(-16711681);//#ff0083
-                but.setText("설정관리");
-                but.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View paramAnonymousView) {
-                        MyAndroidActivity.this.intentOption = new Intent(MyAndroidActivity.this, OptionActivity.class);
-                        MyAndroidActivity.this.startActivity(MyAndroidActivity.this.intentOption);
-                    }
-                });
-                MyAndroidActivity.this.btnMission.add(but);
-            }
-            int i = 0;
-            for (; ; ) {
-                if (i >= MyAndroidActivity.this.btnMission.size()) {
-                    if ((MyAndroidActivity.this.pd != null) && (MyAndroidActivity.this.pd.isShowing())) {
+            if ((MyAndroidActivity.this.pd != null) && (MyAndroidActivity.this.pd.isShowing())) {
                         MyAndroidActivity.this.pd.dismiss();
-                    }
-                    return;
-                }
-                MyAndroidActivity.this.baseContainer.addView((View) MyAndroidActivity.this.btnMission.get(i));
-                i += 1;
             }
+            mGridView.setAdapter(mGridViewAdapter);
+            mGridViewAdapter.notifyDataSetChanged();
+
         }
     }
 

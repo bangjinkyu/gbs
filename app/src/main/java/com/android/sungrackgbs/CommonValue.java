@@ -8,6 +8,7 @@ public class CommonValue extends Application
     private String _auth;
     private String _misidx;
     private String _misnm;
+    private String _useyn;
 
     public CommonValue() {
         instance = this;
@@ -35,6 +36,11 @@ public class CommonValue extends Application
         return this._misidx;
     }
 
+    public String getYseyn()
+    {
+        return this._useyn;
+    }
+
     public void setAuth(String paramString)
     {
         this._auth = paramString;
@@ -48,5 +54,10 @@ public class CommonValue extends Application
     public void setMisidx(String paramString)
     {
         this._misidx = paramString;
+    }
+
+    public void setYseyn(String paramString)
+    {
+        this._useyn = paramString;
     }
 }
