@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 public class TabPagerAdapter extends FragmentStatePagerAdapter {
     private int tabCount;
 
+    private String[] tabTitles = new String[]{"", "", ""};
+
     public TabPagerAdapter(FragmentManager fm, int tabCount) {
         super(fm);
         this.tabCount = tabCount;
@@ -24,7 +26,11 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                 SecondFragment secondFragment = new SecondFragment();
 
                 return secondFragment;
+            case 2:
 
+                ThirdFragment thirdFragment = new ThirdFragment();
+
+                return thirdFragment;
 
             default:
                 return null;
@@ -35,4 +41,5 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return tabCount ;
     }
+
 }

@@ -1,15 +1,14 @@
 package com.android.sungrackgbs;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,11 +32,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class SecondFragment extends Fragment {
+public class ThirdFragment extends Fragment {
 
-    private static final String TAG = "SecondFragment";
-    private LinearLayout Tab2;
-    private String urlGetSunday = "http://www.bwm.or.kr/attend/m_attend_holyday_g2.php?day=";
+    private static final String TAG = "ThirdFragment";
+    private LinearLayout Tab3;
+    private String urlGetSunday = "http://www.bwm.or.kr/attend/m_attend_holyday_g3.php?day=";
     private ArrayList<Integer> sValues = new ArrayList();
     private ArrayList<String> sXValues = new ArrayList();
     private ArrayList<int[]> sundayValue = new ArrayList();
@@ -94,16 +93,18 @@ public class SecondFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_fragment2,container,false);
+        return inflater.inflate(R.layout.tab_fragment3, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Tab2 = (LinearLayout)view.findViewById(R.id.Tab2);
+        super.onViewCreated(view, savedInstanceState);
+        Tab3 = (LinearLayout)view.findViewById(R.id.Tab3);
         txtSunday = (TextView) view.findViewById(R.id.txtSunday);
         Calendar cal2 = Calendar.getInstance();
         cal2.add(Calendar.DAY_OF_WEEK,  1-cal2.get(Calendar.DAY_OF_WEEK));
@@ -160,7 +161,7 @@ public class SecondFragment extends Fragment {
                 sundayValue = new ArrayList();
             }
             sundayValue.add(ivalue);
-            setTab2();
+            setTab3();
         }
     }
 
@@ -215,7 +216,6 @@ public class SecondFragment extends Fragment {
                                 i = Integer.parseInt((String) mCnt);
 
                                 sValues.add(Integer.valueOf(i));
-                                mMisnm=mMisnm.substring(4);
                                 sXValues.add(mMisnm);
                             }
 
@@ -233,9 +233,9 @@ public class SecondFragment extends Fragment {
         }
     }
 
-    private void setTab2() {
+    private void setTab3() {
         try {
-            Tab2.removeAllViews();
+            Tab3.removeAllViews();
             XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
             String[] arrayOfString = new String[1];
@@ -307,7 +307,7 @@ public class SecondFragment extends Fragment {
 
             //그래프 객체 생성
             GraphicalView mChartView = ChartFactory.getBarChartView(mContext, (XYMultipleSeriesDataset) dataset, (XYMultipleSeriesRenderer) renderer, BarChart.Type.STACKED);
-            Tab2.addView(mChartView);
+            Tab3.addView(mChartView);
         } catch (Exception e) {
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
         }

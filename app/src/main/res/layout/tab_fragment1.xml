@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    >
+
+    <LinearLayout
+        android:gravity="left"
+        android:paddingLeft="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Tab 1"/>
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@android:color/darker_gray"
+        android:text="주일 : "/>
+    <TextView
+        android:id="@id/txtSunday"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="yyyy-mm-dd"
+        android:textColor="@android:color/darker_gray"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/conTab1"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+   </LinearLayout>
+
 </LinearLayout>

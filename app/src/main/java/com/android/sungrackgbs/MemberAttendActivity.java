@@ -555,7 +555,7 @@ public class MemberAttendActivity extends Activity {
             //수치값 글자 크기 / X축 최소, 최대값  /Y축 최소,최대값  //수치값 글자 크기 / X축 최소, 최대값  /Y축 최소,최대값
             ((XYMultipleSeriesRenderer) renderer).setLabelsTextSize(25.0F);
             ((XYMultipleSeriesRenderer) renderer).setYAxisMin(0.0D);
-            ((XYMultipleSeriesRenderer) renderer).setYAxisMax(100.0D);
+            ((XYMultipleSeriesRenderer) renderer).setYAxisMax(60.0D);
             ((XYMultipleSeriesRenderer) renderer).setXAxisMin(0.0D);
             ((XYMultipleSeriesRenderer) renderer).setXAxisMax(this.mValues.size() + 1);
             //X,Y축 라인 색상
@@ -720,11 +720,11 @@ public class MemberAttendActivity extends Activity {
         this.btnSort.setTextColor(-1);
         this.tabHost = ((TabHost) findViewById(R.id.tabhost));
         this.tabHost.setup();
-        TabHost.TabSpec spec1 = this.tabHost.newTabSpec("tag1");
-        spec1.setContent(R.id.tab1);
-        spec1.setIndicator("주일전체", getResources().getDrawable(R.drawable.buttons));
-
-        this.tabHost.addTab(spec1);
+//        TabHost.TabSpec spec1 = this.tabHost.newTabSpec("tag1");
+//        spec1.setContent(R.id.tab1);
+//        spec1.setIndicator("주일전체", getResources().getDrawable(R.drawable.buttons));
+//
+//        this.tabHost.addTab(spec1);
         TabHost.TabSpec spec2 = this.tabHost.newTabSpec("tag2");
         spec2.setContent(R.id.tab2);
         spec2.setIndicator(((CommonValue) getApplication()).getMisNm(), getResources().getDrawable(R.drawable.icon_mi));
@@ -759,13 +759,13 @@ public class MemberAttendActivity extends Activity {
             this.mDay_T = calt.get(Calendar.DATE);
             updateDisplay(1);
             //주일전체
-             Calendar cal2 = Calendar.getInstance();
-            cal2.add(Calendar.DAY_OF_WEEK,  1-cal2.get(Calendar.DAY_OF_WEEK));
-            this.mYear_S = cal2.get(Calendar.YEAR);
-            this.mMonth_S = cal2.get(Calendar.MONTH);
-            this.mDay_S = cal2.get(Calendar.DATE);
-            updateDisplay(2);
-
+//             Calendar cal2 = Calendar.getInstance();
+//            cal2.add(Calendar.DAY_OF_WEEK,  1-cal2.get(Calendar.DAY_OF_WEEK));
+//            this.mYear_S = cal2.get(Calendar.YEAR);
+//            this.mMonth_S = cal2.get(Calendar.MONTH);
+//            this.mDay_S = cal2.get(Calendar.DATE);
+//            updateDisplay(2);
+             //목장
              Calendar calF = Calendar.getInstance();
             calF.add(Calendar.MONTH, -1);
             calF.add(Calendar.DAY_OF_WEEK,  1-calF.get(Calendar.DAY_OF_WEEK));
@@ -826,7 +826,7 @@ public class MemberAttendActivity extends Activity {
                     MemberAttendActivity.this.GetPrivateData();
                 }
             });
-            GetSundayData();
+            //GetSundayData();
             GetMissionData();
             GetPrivateData();
 
@@ -1016,7 +1016,7 @@ public class MemberAttendActivity extends Activity {
                 MemberAttendActivity.this.sundayValue = new ArrayList();
             }
             MemberAttendActivity.this.sundayValue.add(ivalue);
-            MemberAttendActivity.this.setTab1();
+           //  MemberAttendActivity.this.setTab1();
         }
     }
 
