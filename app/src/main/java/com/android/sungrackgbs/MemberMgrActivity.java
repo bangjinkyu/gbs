@@ -34,7 +34,7 @@ public class MemberMgrActivity extends Activity {
      private String misidx;
      private String Grade;
      private ProgressDialog pd;
-     private String urlMemberList = "http://www.bwm.or.kr/attend/m_member_mgr_list.php?misidx=";
+     private String urlMemberList = "http://www.bwm.or.kr/attend/m_member_mgr_list_g.php?misidx=";
 //
     private void getMemberList(String paramString) {
 

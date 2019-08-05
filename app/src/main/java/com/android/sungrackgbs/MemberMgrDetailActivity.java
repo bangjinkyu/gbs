@@ -104,9 +104,9 @@ public class MemberMgrDetailActivity extends Activity {
     EditText txtPhone2;
     EditText txtPhone3;
     EditText txtRemark;
-    String urlDeleteMember = "http://www.bwm.or.kr/attend/m_member_save.php?misidx=";
-    String urlGetMember = "http://www.bwm.or.kr/attend/m_member_detail.php?misidx=";
-    String urlSaveMember = "http://www.bwm.or.kr/attend/m_member_save.php?misidx=";
+    String urlDeleteMember = "http://www.bwm.or.kr/attend/m_member_save_g.php?misidx=";
+    String urlGetMember = "http://www.bwm.or.kr/attend/m_member_detail_g.php?misidx=";
+    String urlSaveMember = "http://www.bwm.or.kr/attend/m_member_save_g.php?misidx=";
 
     private String Delete(String paramString) {
 

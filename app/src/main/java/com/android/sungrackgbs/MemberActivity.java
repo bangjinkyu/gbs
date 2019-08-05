@@ -74,7 +74,7 @@ public class MemberActivity extends Activity {
     TextView tvCellO;//출석한 셀원
     TextView tvTotal;  //출석한 토탈
     TextView txtresult; //출석한 인원
-    String urlMemberList = "http://www.bwm.or.kr/attend/m_member_list.php?misidx=";
+    String urlMemberList = "http://www.bwm.or.kr/attend/m_member_list_g.php?misidx=";
     String urlSaveAttendList = "http://www.bwm.or.kr/attend/m_attendance_insert.php?";
     String yyyymmdd = "";
     static final int REQUEST_IMAGE_GET = 1;
