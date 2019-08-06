@@ -44,7 +44,8 @@
         android:text="조별출석률"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/buttons"/>
+        android:background="@drawable/buttons"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btn_setting"
@@ -56,6 +57,7 @@
         android:text="설정관리"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/buttons"/>
+        android:background="@drawable/buttons"
+        android:visibility="gone"/>
 
 </RelativeLayout>

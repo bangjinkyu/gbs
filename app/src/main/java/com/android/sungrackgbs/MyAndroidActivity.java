@@ -377,6 +377,8 @@ public class MyAndroidActivity extends Activity {
             }
             mGridView.setAdapter(mGridViewAdapter);
             mGridViewAdapter.notifyDataSetChanged();
+            btn_attend.setVisibility(View.VISIBLE);
+            btn_setting.setVisibility(View.VISIBLE);
 
         }
     }
