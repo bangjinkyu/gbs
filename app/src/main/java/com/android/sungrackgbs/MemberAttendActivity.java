@@ -138,8 +138,8 @@ public class MemberAttendActivity extends Activity {
     TextView txtMisTo;
     TextView txtSunday;
     TextView txtTo;
-    String urlGetMember_n = "http://www.bwm.or.kr/attend/m_attend_member_n2.php?misidx=";  //이름순
-    String urlGetMember_r = "http://www.bwm.or.kr/attend/m_attend_member_r2.php?misidx="; //출석순
+    String urlGetMember_n = "http://www.bwm.or.kr/attend/m_attend_member_n_g.php?misidx=";  //이름순
+    String urlGetMember_r = "http://www.bwm.or.kr/attend/m_attend_member_r_g.php?misidx="; //출석순
     String urlGetMission = "http://www.bwm.or.kr/attend/m_attend_mission2.php?misidx=";//각조장별
     String urlGetSunday = "http://www.bwm.or.kr/attend/m_attend_holyday_g.php?day=";
 

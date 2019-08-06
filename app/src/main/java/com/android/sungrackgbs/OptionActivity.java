@@ -44,7 +44,7 @@ public class OptionActivity extends Activity
     TabHost tabHost;
     EditText txtKeyword;
     String urlAuthList = "http://www.bwm.or.kr/attend/m_auth_req_g.php";
-    String urlMemberSearch = "http://www.bwm.or.kr/attend/m_member_search.php";
+    String urlMemberSearch = "http://www.bwm.or.kr/attend/m_member_search_g.php";
     String urlSaveAuth = "http://www.bwm.or.kr/attend/m_auth_g_update.php";
     String urlDeleteAuth ="http://www.bwm.or.kr/attend/m_auth_g_delete.php";
 
@@ -426,14 +426,14 @@ public class OptionActivity extends Activity
 
             RowItem localRowItem = (RowItem) rowItems.get(i);
 
-            phonetextView.setText(localRowItem.getPhone());
+            phonetextView.setText(localRowItem.getPhone());  //폰번호
              phonetextView.setTextColor(getResources().getColor(R.color.blak));
             phonetextView.setWidth(180);
             phonetextView.setGravity(3);
             phonetextView.setTextSize(12);
 
-
-            MisnmObject1.setText(localRowItem.getMisnm()); //목장이름
+            String misnsm=localRowItem.getMisnm().substring(4);
+            MisnmObject1.setText(misnsm); //목장이름
             MisnmObject1.setWidth(140);
             MisnmObject1.setGravity(3);
             MisnmObject1.setTextSize(12);
@@ -444,16 +444,16 @@ public class OptionActivity extends Activity
             misinedit.setTextSize(12);
 
             MemTextView.setText(localRowItem.getMemnm());//이름
-            MemTextView.setWidth(100);
+            MemTextView.setWidth(120);
             MemTextView.setGravity(3);
             MemTextView.setTextSize(11);
 
             editText.setText(localRowItem.getGrade());  //권한
-            editText.setWidth(110);
+            editText.setWidth(120);
             editText.setTextSize(11);
             editText.setGravity(3);
 
-            usebt.setWidth(40);
+            usebt.setWidth(40);                              //사용/미사용
             usebt.setHeight(40);
             usebt.setGravity( Gravity.CENTER);
             usebt.setBackgroundResource(R.drawable.togglebuttons);
@@ -517,7 +517,7 @@ public class OptionActivity extends Activity
             ((TableRow) tableRow).setPadding(0, 5, 3, 3);
             ((TableRow) tableRow).addView(phonetextView);
             ((TableRow) tableRow).addView(MisnmObject1);
-            ((TableRow) tableRow).addView(misinedit);
+            //((TableRow) tableRow).addView(misinedit);
             ((TableRow) tableRow).addView(MemTextView);
             ((TableRow) tableRow).addView(editText);
             ((TableRow) tableRow).addView(usebt);

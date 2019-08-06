@@ -216,6 +216,7 @@ public class ThirdFragment extends Fragment {
                                 i = Integer.parseInt((String) mCnt);
 
                                 sValues.add(Integer.valueOf(i));
+                                mMisnm=mMisnm.substring(4);
                                 sXValues.add(mMisnm);
                             }
 
