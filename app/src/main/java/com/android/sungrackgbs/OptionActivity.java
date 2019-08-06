@@ -432,8 +432,7 @@ public class OptionActivity extends Activity
             phonetextView.setGravity(3);
             phonetextView.setTextSize(12);
 
-            String misnsm=localRowItem.getMisnm().substring(4);
-            MisnmObject1.setText(misnsm); //목장이름
+            MisnmObject1.setText(localRowItem.getMisnm()); //목장이름
             MisnmObject1.setWidth(140);
             MisnmObject1.setGravity(3);
             MisnmObject1.setTextSize(12);
