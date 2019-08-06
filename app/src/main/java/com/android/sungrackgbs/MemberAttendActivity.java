@@ -133,11 +133,12 @@ public class MemberAttendActivity extends Activity {
     LinearLayout tab2;
     LinearLayout tab3;
     TabHost tabHost;
-    TextView txtFrom;
-    TextView txtMisFrom;
-    TextView txtMisTo;
+
+    TextView txtMisFrom;  //목장별 기간 first
+    TextView txtMisTo;   //목장별기간 last
     TextView txtSunday;
-    TextView txtTo;
+    TextView txtFrom;     //개인별 기간 from
+    TextView txtTo;        //개인별 기간 to
     String urlGetMember_n = "http://www.bwm.or.kr/attend/m_attend_member_n_g.php?misidx=";  //이름순
     String urlGetMember_r = "http://www.bwm.or.kr/attend/m_attend_member_r_g.php?misidx="; //출석순
     String urlGetMission = "http://www.bwm.or.kr/attend/m_attend_mission2.php?misidx=";//각조장별
@@ -538,20 +539,20 @@ public class MemberAttendActivity extends Activity {
             colors[0] = Color.YELLOW;
             //상단 표시 제목과 글자크기
                 ((XYMultipleSeriesRenderer) renderer).setChartTitle("주일 출석현황");
-                ((XYMultipleSeriesRenderer) renderer).setChartTitleTextSize(30.0F);
+                ((XYMultipleSeriesRenderer) renderer).setChartTitleTextSize(35.0F);
             //분류명 글자 크기 및 생삭 지정
-            ((XYMultipleSeriesRenderer) renderer).setLegendTextSize(25.0F);
+            ((XYMultipleSeriesRenderer) renderer).setLegendTextSize(30.0F);
             SimpleSeriesRenderer seriesRenderer = new SimpleSeriesRenderer();
             for(int i=0;i<colors.length; i++) {
                 ((SimpleSeriesRenderer) seriesRenderer).setColor(colors[0]);
                 ((SimpleSeriesRenderer) seriesRenderer).setDisplayChartValues(true);
-                ((SimpleSeriesRenderer) seriesRenderer).setChartValuesTextSize(18.0F);
+                ((SimpleSeriesRenderer) seriesRenderer).setChartValuesTextSize(25.0F);
                 ((XYMultipleSeriesRenderer) renderer).addSeriesRenderer((SimpleSeriesRenderer) seriesRenderer);
             }
             //X,Y축 항목이름과 글자 크기
             ((XYMultipleSeriesRenderer) renderer).setXTitle("날짜(주일)");
             ((XYMultipleSeriesRenderer) renderer).setYTitle("인원");
-            ((XYMultipleSeriesRenderer) renderer).setAxisTitleTextSize(25.0F);
+            ((XYMultipleSeriesRenderer) renderer).setAxisTitleTextSize(30.0F);
             //수치값 글자 크기 / X축 최소, 최대값  /Y축 최소,최대값  //수치값 글자 크기 / X축 최소, 최대값  /Y축 최소,최대값
             ((XYMultipleSeriesRenderer) renderer).setLabelsTextSize(25.0F);
             ((XYMultipleSeriesRenderer) renderer).setYAxisMin(0.0D);
