@@ -748,7 +748,8 @@ public class MemberAttendActivity extends Activity {
             this.misidx = getIntent().getExtras().get("misidx").toString();
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.MONTH, -1);
-            cal.add(Calendar.DAY_OF_WEEK,  1 - cal.get(Calendar.DAY_OF_WEEK));
+            //cal.add(Calendar.DAY_OF_WEEK,  Calendar.SUNDAY - cal.get(Calendar.DAY_OF_WEEK));
+            cal.add(Calendar.DATE,   -7);
             this.mYear_F = cal.get(Calendar.YEAR);
             this.mMonth_F = cal.get(Calendar.MONTH);
             this.mDay_F = cal.get(Calendar.DATE);
@@ -769,7 +770,8 @@ public class MemberAttendActivity extends Activity {
              //목장
              Calendar calF = Calendar.getInstance();
             calF.add(Calendar.MONTH, -1);
-            calF.add(Calendar.DAY_OF_WEEK,  1-calF.get(Calendar.DAY_OF_WEEK));
+           // calF.add(Calendar.DAY_OF_WEEK,   Calendar.SUNDAY-calF.get(Calendar.DAY_OF_WEEK));
+            calF.add(Calendar.DATE,   -7);
             this.mYear_Mis_F = calF.get(Calendar.YEAR);
             this.mMonth_Mis_F = calF.get(Calendar.MONTH);
             this.mDay_Mis_F = calF.get(Calendar.DATE);
